@@ -1,0 +1,74 @@
+package com.love.dsa.revision.linkedlist.doubly;
+
+public class DoublyLinkedList {
+
+	public static class Node{
+		private Node prev;
+		private int data;
+		private Node next;
+		
+		public Node(int data) {
+			this.prev=null;
+			this.data=data;
+			this.next=null;
+		}
+	}
+	Node head=null;
+	Node tail=null;
+	private Node addFirst(int data) {
+		
+		Node newNode=new Node(data);
+		
+		if(head==null && tail==null) {
+			head=tail=newNode;
+			return head;
+		}
+		newNode.next=head;
+		head.prev=newNode;
+		head=newNode;
+		
+		return head;
+	}
+	public Node addLast(int data) {
+		
+		Node newNode=new Node(data);
+		if(head==null && tail==null) {
+			head=tail=newNode;
+			return head;
+		}
+		Node curr=head;
+		
+		while(curr.next!=null) {
+			
+			curr=curr.next;
+		}
+		curr.next=newNode;
+		newNode.prev=curr;
+		tail=newNode;
+		return head;
+	}
+	private void print(Node head) {
+		if(head==null&& tail==null) {
+			System.out.println("List is empty!");
+			return;
+		}
+		Node curr=head;
+		System.out.println("HEAD : "+head.data);
+		while(curr!=null) {
+			System.out.print(curr.data+" --> ");
+			curr=curr.next;
+		}
+		
+		System.out.print(curr);
+		System.out.println("\nTAIL: "+tail.data);
+		System.out.println();
+	}
+	public static void main(String[] args) {
+		
+		DoublyLinkedList dl=new DoublyLinkedList();
+		dl.addFirst(20);
+		Node head=dl.addFirst(10);
+		dl.print(head);
+	}
+
+}

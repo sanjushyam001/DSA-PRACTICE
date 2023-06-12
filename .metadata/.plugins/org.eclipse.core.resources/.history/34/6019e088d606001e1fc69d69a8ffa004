@@ -1,0 +1,9 @@
+package com.love.dsa.stack;
+
+public class TwoStackTest {
+
+	public static void main(String[] args) {
+		TwoStack twoStack=new TwoStack(5);
+	}
+
+}

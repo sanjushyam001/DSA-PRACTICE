@@ -1,0 +1,128 @@
+package com.love.dsa.revision.linkedlist.singly;
+
+public class LinkedList {
+
+	public static class Node {
+		
+		int data;
+		Node next;
+		public Node(int data) {
+			this.data=data;
+			this.next=null;
+		}
+	}
+	Node head=null;
+	Node tail=null;
+	public Node addFirst(int data) {
+		
+		Node newNode=new Node(data);
+		if(head==null) {
+			head=newNode;
+			tail=newNode;
+			return head;
+		}
+		Node temp=head;
+		head=newNode;
+		newNode.next=temp;
+		return head;
+		
+	}
+	public Node addLast(int data) {
+		Node newNode=new Node(data);
+		if(head==null && tail==null) {
+			return addFirst(data);
+			
+		}
+		tail.next=newNode;
+		tail=newNode;
+		return head;
+		
+	}
+	public int size() {
+		int count=0;
+		Node curr=head;
+		while(curr!=null) {
+			count++;
+			curr=curr.next;
+		}
+		return count;
+	}
+	public Node insertAt(int p,int data) {
+		
+		Node curr=head;
+		int count=0;
+		Node prev=null;
+		Node newNode=new Node(data);
+		
+		if(head==null) {
+			return head;
+		}
+		if(p==0){
+			System.out.println("adding at first");
+			return addFirst(data);
+		}
+		if(p==size()) {
+			System.out.println("adding at last");
+			return addLast(data);
+		}
+		if(p>size()) {
+			System.out.println("you can't add at "+p+" because give position is higher than  "+size());
+			return head;
+		}
+		while(curr!=null) {
+				
+				if(count==p) {
+					break;
+				}
+				prev=curr;
+				count++;
+				curr=curr.next;
+		}
+		Node next=prev.next;
+		prev.next=newNode;
+		newNode.next=next;
+		System.out.println("adding at "+p);
+		return head;
+		
+		
+	}
+	public void print(Node head) {
+		
+		Node curr=head;
+		while(curr!=null) {
+			System.out.print(curr.data+" -- >");
+			curr=curr.next;
+		}
+		if(curr==null) {
+			System.out.print(curr);
+		}
+		
+	}
+	public static void main(String args[]) {
+		LinkedList ll=new LinkedList();
+		ll.addFirst(20);
+		Node head=ll.addFirst(10);
+		System.out.println("HEAD : "+head.data+ " NEXT: "+head.next.data);
+		ll.print(head);
+		ll.addLast(30);
+		System.out.println("\nAfter adding at last ");
+		ll.print(head);
+		head=ll.insertAt(3, 40);
+		System.out.println("\nAfter insert  at position ");
+		ll.print(head);
+		head=ll.insertAt(0, 05);
+		System.out.println("\nAfter insert  at position ");
+		ll.print(head);
+		head=ll.insertAt(1, 7);
+		System.out.println("\nAfter insert  at position ");
+		ll.print(head);
+		head=ll.insertAt(6, 50);
+		System.out.println("\nAfter insert  at position ");
+		ll.print(head);
+		head=ll.insertAt(8, 60);
+		System.out.println("\nAfter insert  at position\n ");
+		ll.print(head);
+//		System.out.println("\nsize : "+ll.size());
+		
+	}
+}

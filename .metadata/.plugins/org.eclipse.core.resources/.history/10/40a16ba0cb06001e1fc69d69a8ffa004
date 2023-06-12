@@ -1,0 +1,21 @@
+package com.love.dsa.stack;
+
+public class StackTest {
+
+	public static void main(String[] args) {
+		Stack stack=new Stack();
+		stack.push(1);
+		stack.push(2);
+		stack.print();
+		System.out.println("Size: "+stack.size());
+		int poppedElement = stack.pop();
+		System.out.println("Popped Elemet is : "+poppedElement);
+		stack.print();
+		System.out.println("Size: "+stack.size());
+		int poppedElement1 = stack.pop();
+		System.out.println("Popped Elemet is : "+poppedElement1);
+		stack.print();
+
+	}
+
+}

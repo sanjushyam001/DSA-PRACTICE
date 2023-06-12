@@ -1,0 +1,30 @@
+package com.love.dsa.stack.interview;
+
+import java.util.Stack;
+
+public class ReverseStringUsingStack {
+
+	private String reverse(String s) {
+		
+		Stack<Character> stack=new Stack<>();
+		String reverseString="";
+		int i=0;
+		while(i<s.length()) {
+			char ch=s.charAt(i);
+			stack.push(ch);
+			i++;
+		}
+		while(stack.isEmpty()) {
+			
+			char ch=stack.pop();
+			reverseString+=ch;
+		}
+		
+		return reverseString;
+	}
+	public static void main(String[] args) {
+		
+
+	}
+
+}

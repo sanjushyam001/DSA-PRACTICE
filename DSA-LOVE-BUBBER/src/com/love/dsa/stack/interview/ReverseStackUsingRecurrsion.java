@@ -1,0 +1,40 @@
+package com.love.dsa.stack.interview;
+
+import java.util.*;
+public class ReverseStackUsingRecurrsion {
+
+	public static void insertAtBottom(Stack<Integer> stack,int element) {
+		
+		if(stack.isEmpty()) {
+			stack.push(element);
+			return;
+		}
+		int poppedElement=stack.pop();
+		insertAtBottom(stack,element);
+		stack.push(poppedElement);
+		
+	}
+	public static void reverseStack(Stack<Integer> stack) {
+		
+		if(stack.isEmpty()) {
+		
+			return;
+		}
+		int poppedElement=stack.pop();
+		//recurssive call
+		reverseStack(stack);
+		//call back
+		insertAtBottom(stack,poppedElement);
+	}
+	public static void main(String[] args) {
+		
+		Stack<Integer> stack=new Stack<>();
+		stack.push(7);stack.push(1);stack.push(4);stack.push(5);
+		reverseStack(stack);
+		while(!stack.isEmpty()) {
+			System.out.println(stack.pop());
+		}
+
+	}
+
+}

@@ -1,0 +1,72 @@
+package com.love.dsa.stack;
+
+public class TwoStack {
+
+	int ar[];
+	int size;
+	int top1;
+	int top2;
+	
+	public TwoStack(int size) {
+	
+		this.size=size;
+		ar=new int[size];
+		top1=-1;
+		top2=size;
+	}
+	public void push1(int data) {
+		
+		if(top2-top1>1) {
+			top1++;
+			ar[top1]=data;
+			return;
+		}
+		System.out.println("Stack overflow!");
+	}
+	public void push2(int data) {
+		
+		if(top2-top1>1) {
+			top2--;
+			ar[top2]=data;
+			return;
+		}
+		System.out.println("Stack overflow!");
+	}
+	public int pop1() {
+		int topValue=-1;
+		if(top1>=0) {
+			topValue=ar[top1];
+			top1--;
+		}
+		return topValue;
+	}
+	public int pop2() {
+		int topValue=-1;
+		if(top2<size) {
+			topValue=ar[top2];
+			top2++;
+		}
+		return topValue;
+	}
+	public void printStack1() {
+		System.out.println("Elements of Stack1");
+		if(top1!=-1) {
+			for(int i=top1;i>=0;i--) {
+				System.out.println(ar[i]);
+			}
+			return;
+		}
+		System.out.println("Stack1 underflow!");
+	}
+	public void printStack2() {
+		System.out.println("Elements of Stack2");
+		if(top2!=size) {
+			for(int i=top2;i<size;i++) {
+				System.out.println(ar[i]);
+			}
+			return;
+		}
+		System.out.println("Stack2 underflow!");
+	}
+
+}
